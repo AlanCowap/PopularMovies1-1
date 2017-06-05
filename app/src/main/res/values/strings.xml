@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name" translatable="true">Popular Films</string>
+    <string name="menu_title" translatable="true">Refresh</string>
+    <string name="film_request" translatable="false">https://api.themoviedb.org/3/movie/popular?</string>
+    <string name="film_request_rating" translatable="false">https://api.themoviedb.org/3/movie/top_rated?</string>
+    <string name="sorting_by_highest" translatable="true">Sorting by Highest Rated</string>
+    <string name="sorting_by_most_popular" translatable="true">Sorting by Most Popular</string>
+    <string name="refreshing_list" translatable="true">Refreshing List</string>
+    <string name="loading_films" translatable="true">Loading Highest Rated Films</string>
+    <string name="film_json_not_found" translatable="true">Something has gone wrong, please check you have a stable internet connection, and try again.</string>
+    <string name="highest_rated" translatable="true">Sort by Highest Rated</string>
+    <string name="most_popular" translatable="true">Sort by Most Popular</string>
+    <string name="title_length_check" translatable="false">...</string>
+    <string name="poster_path" translatable="false">http://image.tmdb.org/t/p/w185</string>
+</resources>
