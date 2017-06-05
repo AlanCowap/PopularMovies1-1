@@ -101,10 +101,10 @@ public class FilmAdapter extends RecyclerView.Adapter<FilmAdapter.FilmViewHolder
                     int orient = con.getResources().getConfiguration().orientation;
                     switch (orient) {
                         case 1:
-                            Picasso.with(con).load(R.drawable.no_poster_image).resize(width / 2, 0).into(poster);
+                           // Picasso.with(con).load(R.drawable.no_poster_image).resize(width / 2, 0).into(poster);
                             break;
                         case 2:
-                            Picasso.with(con).load(R.drawable.no_poster_image).resize(width / 4, 0).into(poster);
+                           // Picasso.with(con).load(R.drawable.no_poster_image).resize(width / 4, 0).into(poster);
                             break;
                     }
                 }

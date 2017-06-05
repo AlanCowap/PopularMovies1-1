@@ -61,7 +61,7 @@ public class FilmDetailActivity extends AppCompatActivity {
                 String posterPath =  getResources().getString(R.string.poster_path);
                 //If filmposter does not contain a ., use the default no poster image from drawables, found at http://www.pinsdaddy.com/no-image-available-icon_nquACkOxV*TJt*l2puUBRhlP12hWM2e9JtVGM0jwJfA/
                 if(!filmPoster.contains(".")){
-                    Picasso.with(this).load(R.drawable.no_poster_image).resize(width/2,0).into(ivPoster);
+                    //Picasso.with(this).load(R.drawable.no_poster_image).resize(width/2,0).into(ivPoster);
                     //Otherwise use the film poster from that location
                 }else Picasso.with(this).load(posterPath+ filmPoster).resize(width/2,0).into(ivPoster);
                 tvOverview.setText(filmDetails.getString("overview"));
