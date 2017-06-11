@@ -12,7 +12,7 @@
         android:background="@color/tabBackground"
         android:layout_toRightOf="@+id/iv_film_detail_poster"
         android:id="@+id/tv_title_tab"
-        android:text="Title"
+        android:text="@string/details_title"
         android:textSize="22sp"
         android:textColor="@color/filmText"
         android:textAlignment="center"
@@ -39,7 +39,7 @@
         android:layout_toRightOf="@id/iv_film_detail_poster"
         android:layout_below="@id/tv_film_detail_title"
         android:background="@color/tabBackground"
-        android:text="Release Date"
+        android:text="@string/details_releasedate"
         />
     <TextView
         android:layout_width="match_parent"
@@ -61,7 +61,7 @@
         android:layout_toRightOf="@id/iv_film_detail_poster"
         android:layout_below="@id/tv_film_detail_release_date"
         android:background="@color/tabBackground"
-        android:text="Rating"
+        android:text="@string/details_rating"
         />
     <TextView
         android:layout_width="match_parent"
@@ -83,7 +83,7 @@
         android:layout_below="@id/tv_film_detail_rating"
         android:layout_toRightOf="@id/iv_film_detail_poster"
         android:background="@color/tabBackground"
-        android:text="Summary"
+        android:text="@string/details_overview"
         />
     <ScrollView
         android:layout_width="wrap_content"
