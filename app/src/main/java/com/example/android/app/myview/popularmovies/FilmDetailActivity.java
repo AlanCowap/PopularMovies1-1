@@ -25,6 +25,7 @@ public class FilmDetailActivity extends AppCompatActivity {
     private TextView tvRating;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //TODO SUGGESTION Consider adding Up navigation to return to your MainActivity from this Activity, better UX.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_film_detail);
         //Get the intent that what used to start this activity

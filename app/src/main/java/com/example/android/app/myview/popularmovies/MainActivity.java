@@ -42,6 +42,8 @@ public class MainActivity extends AppCompatActivity implements FilmAdapter.FilmC
     //Declare constant to hold the key for our state restore bundle
     private static final String SORT_INSTANCE = "sort_type";
     private static final String MOVIE_DB_API = BuildConfig.MY_MOVIEDB_API_KEY;
+    //TODO Excellent You're not storing your key in your java code, however instructions on how & where to put the key would be helpful!
+    //TODO SUGGESTION Consider storing the api key only, i.e. excluding other params like "api_key="
     //Private int to store the variable used in the switch statements to determine landscape/portrait mode
     private int sortOption;
     @Override
@@ -58,12 +60,14 @@ public class MainActivity extends AppCompatActivity implements FilmAdapter.FilmC
         //Check if there is a bundle for savedinstance state, if there is, get the sortOption stored within, else just
         if( savedInstanceState != null){
             this.sortOption = savedInstanceState.getInt(SORT_INSTANCE);
+            //TODO SUGGESTION Always check if your key is in the Bundle before attempting to retrieve it
             this.getMovies(sortOption);
         }else{
             //If there isnt a bundle, display a toast telling the user the films are being loaded
             Toast displayToast = Toast.makeText(this, getResources().getString(R.string.loading_films), Toast.LENGTH_LONG);
             displayToast.show();
             this.getMovies(sortOption);
+            //TODO SUGGESTION Consider starting the background task first and then displaying the Toast = better UX if its loaded ASAP
         }
     }
 
@@ -104,6 +108,7 @@ public class MainActivity extends AppCompatActivity implements FilmAdapter.FilmC
             displayToast.show();
             filmRunner = new FilmHandler(this.getBaseContext());
             sortOption = 0;
+            //TODO SUGGESTION Considering using a named constant, rather than an arbitrary int value, more readable & less error prone.
             getMovies(sortOption);
         }
         //If the item selected is sort by most popular, call the getMovies method passing in that option
@@ -113,6 +118,7 @@ public class MainActivity extends AppCompatActivity implements FilmAdapter.FilmC
             filmRunner = new FilmHandler(this.getBaseContext());
             sortOption = 1;
             getMovies(sortOption);
+            //TODO SUGGESTION Considering refactoring this method: e.g. a switch statement, or if-else if-else; move duplicated code to a new method as required
         }
         return super.onOptionsItemSelected(item);
     }
@@ -129,6 +135,7 @@ public class MainActivity extends AppCompatActivity implements FilmAdapter.FilmC
         }
 
         Uri filmRequest = Uri.parse(film +api ).buildUpon().build();
+        //TODO SUGGESTION Consider using Uri.Builder to create URIs because it’s less error prone than Uri.parse
         URL filmRequestURL = null;
         //Try to build the URL from the previously built URI converted to string
         try{
@@ -137,6 +144,7 @@ public class MainActivity extends AppCompatActivity implements FilmAdapter.FilmC
             Log.e(MainActivity.class.getSimpleName(), urlEx.getMessage());
         }
         return filmRequestURL;
+        //TODO SUGGESTION Consider moving this methods functionality to onPreExecute() of your AsyncTask - or call it from there.
     }
 
 
@@ -177,11 +185,13 @@ public class MainActivity extends AppCompatActivity implements FilmAdapter.FilmC
         }else{
             //Display a toast if there is no JSON OBject associated with that ViewHolder
             errorMessageToast = Toast.makeText(this,getResources().getString(R.string.film_json_not_found),Toast.LENGTH_LONG );
+            //TODO SUGGESTION This Toast is never shown, .show()
         }
 
     }
 
     public class FilmHandler extends AsyncTask<URL, Void, String>{
+        //TODO SUGGESTION Consider using AsyncTaskLoader rather than AsyncTask, for the many benefits it brings as discussed in class
 
         private Context cont;
 
@@ -196,6 +206,7 @@ public class MainActivity extends AppCompatActivity implements FilmAdapter.FilmC
             try{
                 //Start a new Thread and get the HTTP response
                 filmResults = MainActivity.getResponseFromMovieDb(filmUrls);
+                // TODO AWESOME  You're doing your network requests on a background thread
             }catch(IOException ioEx){
                 Log.e(MainActivity.class.getSimpleName(), ioEx.getMessage());
             }
@@ -214,6 +225,7 @@ public class MainActivity extends AppCompatActivity implements FilmAdapter.FilmC
                     results = new JSONObject(s);
                     //Set films equal to the JSON Array designated by the String results
                     films = results.getJSONArray("results");
+                    // TODO SUGGESTION Move string literals to strings.xml or constants
                     //Call the setfilms method on the filmToDisplay filmadapter object, passing in the films JSONArray
                     filmToDisplay.setFilms(films);
                     //Set the rvFilms recyclerview Object equal to the RecyclerView designated by rv_films_to_display
@@ -233,7 +245,7 @@ public class MainActivity extends AppCompatActivity implements FilmAdapter.FilmC
                     rvFilms.setHasFixedSize(true);
                     //Set the rvFilms adapter equal to filmToDisplay
                     rvFilms.setAdapter(filmToDisplay);
-
+                    //TODO SUGGESTION Much of this heavy lifting could be done in the background thread rather than the UI thread: performance, UX.
                 }catch(JSONException jsonEx){
                     Log.e(MainActivity.class.getSimpleName(), jsonEx.getMessage());
                 }

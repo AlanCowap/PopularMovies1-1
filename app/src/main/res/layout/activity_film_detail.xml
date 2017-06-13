@@ -23,6 +23,7 @@
         android:textAlignment="center"
         android:paddingBottom="3dp"
         />
+    <!-- REQUIREMENT Move strings like these to strings.xml android:Text="Title" -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
