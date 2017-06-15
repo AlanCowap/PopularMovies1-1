@@ -12,4 +12,8 @@
     <string name="most_popular" translatable="true">Sort by Most Popular</string>
     <string name="title_length_check" translatable="false">...</string>
     <string name="poster_path" translatable="false">http://image.tmdb.org/t/p/w185</string>
+    <string name="details_title" translatable="true">Title</string>
+    <string name="details_releasedate" translatable="true">Release Date</string>
+    <string name="details_rating" translatable="true">Rating</string>
+    <string name="details_overview" translatable="true">Summary</string>
 </resources>
