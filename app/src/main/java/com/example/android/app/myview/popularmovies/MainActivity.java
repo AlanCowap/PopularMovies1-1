@@ -70,6 +70,11 @@ public class MainActivity extends AppCompatActivity implements FilmAdapter.FilmC
             //TODO SUGGESTION Consider starting the background task first and then displaying the Toast = better UX if its loaded ASAP
         }
     }
+    //TODO-2 REQUIREMENT "App does not crash, force close, freeze, or otherwise function abnormally on any targeted device"
+    //TODO-2 To reproduce error: (Uninstall App) > Install App > Start App > Turn off data > Change Sort order > rotate device
+    //TODO-2 When data connection is lost the sort options do not function, nor do they advise user of same.
+    //TODO-2 When data connection is lost the UI can remain blank for 30 seconds or more before error is displayed
+
 
     //Override the onsaveinstancestate method and store the sortOption
     @Override
