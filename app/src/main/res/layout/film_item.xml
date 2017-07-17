@@ -10,4 +10,5 @@
         android:id="@+id/iv_film_poster"
         android:adjustViewBounds="true"
         />
+    <!-- TODO SUGGESTION Include a contentDescription for ImageViews for Accessibility-->
 </FrameLayout>

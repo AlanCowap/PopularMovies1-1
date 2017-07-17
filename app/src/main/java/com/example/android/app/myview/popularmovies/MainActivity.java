@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements FilmAdapter.FilmC
     private Toast displayToast;
     //Declare constant to hold the key for our state restore bundle
     private static final String SORT_INSTANCE = "sort_type";
+<<<<<<< HEAD
     private static final String MOVIE_DB_API = "api_key=" + BuildConfig.MY_MOVIEDB_API_KEY;
     private static final int SORT_BY_MOST_POPULAR = 1;
     private static final int SORT_BY_HIGHEST_RATED = 0;
@@ -55,6 +56,11 @@ public class MainActivity extends AppCompatActivity implements FilmAdapter.FilmC
     private static final String FILM_URL_STRING = "FILM_URL";
     private static final int LOADER_ID = 10011;
     private SQLiteDatabase filmDatabase;
+=======
+    private static final String MOVIE_DB_API = BuildConfig.MY_MOVIEDB_API_KEY;
+    //TODO Excellent You're not storing your key in your java code, however instructions on how & where to put the key would be helpful!
+    //TODO SUGGESTION Consider storing the api key only, i.e. excluding other params like "api_key="
+>>>>>>> 779f4ee579023dc3ace5d0a0a3ac54f9754c1a64
     //Private int to store the variable used in the switch statements to determine landscape/portrait mode
     private int sortOption;
     @Override
@@ -78,9 +84,25 @@ public class MainActivity extends AppCompatActivity implements FilmAdapter.FilmC
             this.getMovies(sortOption);
             //}
         }else{
+<<<<<<< HEAD
             this.getMovies(SORT_BY_HIGHEST_RATED);
         }
     }
+=======
+            //If there isnt a bundle, display a toast telling the user the films are being loaded
+            Toast displayToast = Toast.makeText(this, getResources().getString(R.string.loading_films), Toast.LENGTH_LONG);
+            displayToast.show();
+            this.getMovies(sortOption);
+            //TODO SUGGESTION Consider starting the background task first and then displaying the Toast = better UX if its loaded ASAP
+        }
+    }
+    //TODO-2 REQUIREMENT "App does not crash, force close, freeze, or otherwise function abnormally on any targeted device"
+    //TODO-2 To reproduce error: (Uninstall App) > Install App > Start App > Turn off data > Change Sort order > rotate device
+    //TODO-2 When data connection is lost the sort options do not function, nor do they advise user of same.
+    //TODO-2 When data connection is lost the UI can remain blank for 30 seconds or more before error is displayed
+
+
+>>>>>>> 779f4ee579023dc3ace5d0a0a3ac54f9754c1a64
     //Override the onsaveinstancestate method and store the sortOption
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState){
@@ -135,6 +157,7 @@ public class MainActivity extends AppCompatActivity implements FilmAdapter.FilmC
         }
         //If the item selected is sort by highest rated, call the getMovies method passing in that option
         if(item.getItemId() == R.id.mn_sort_by_highest_rated){
+<<<<<<< HEAD
             handleMenuChoice(getResources().getString(R.string.sorting_by_highest), SORT_BY_HIGHEST_RATED);
         }
         //If the item selected is sort by most popular, call the getMovies method passing in that option
@@ -144,6 +167,22 @@ public class MainActivity extends AppCompatActivity implements FilmAdapter.FilmC
         }
         else if(item.getItemId() == R.id.mn_sort_by_favourites){
             handleMenuChoice(getResources().getString(R.string.sorting_by_favourites), SORT_BY_FAVOURITES);
+=======
+            Toast displayToast = Toast.makeText(this, getResources().getString(R.string.sorting_by_highest), Toast.LENGTH_LONG);
+            displayToast.show();
+            filmRunner = new FilmHandler(this.getBaseContext());
+            sortOption = 0;
+            //TODO SUGGESTION Considering using a named constant, rather than an arbitrary int value, more readable & less error prone.
+            getMovies(sortOption);
+        }
+        //If the item selected is sort by most popular, call the getMovies method passing in that option
+        if(item.getItemId() == R.id.mn_sort_by_most_popular){
+            Toast displayToast = Toast.makeText(this, getResources().getString(R.string.sorting_by_most_popular), Toast.LENGTH_LONG);
+            displayToast.show();
+            filmRunner = new FilmHandler(this.getBaseContext());
+            sortOption = 1;
+            getMovies(sortOption);
+>>>>>>> 779f4ee579023dc3ace5d0a0a3ac54f9754c1a64
             //TODO SUGGESTION Considering refactoring this method: e.g. a switch statement, or if-else if-else; move duplicated code to a new method as required
         }
         return super.onOptionsItemSelected(item);
@@ -231,6 +270,7 @@ public class MainActivity extends AppCompatActivity implements FilmAdapter.FilmC
         }else{
             //Display a toast if there is no JSON OBject associated with that ViewHolder
             errorMessageToast = Toast.makeText(this,getResources().getString(R.string.film_json_not_found),Toast.LENGTH_LONG );
+<<<<<<< HEAD
             errorMessageToast.show();
             //TODO SUGGESTION This Toast is never shown, .show()
         }
@@ -271,6 +311,9 @@ public class MainActivity extends AppCompatActivity implements FilmAdapter.FilmC
                 rvFilms.setVisibility(View.INVISIBLE);
             }
             tvErrorBox.setVisibility(View.VISIBLE);
+=======
+            //TODO SUGGESTION This Toast is never shown, .show()
+>>>>>>> 779f4ee579023dc3ace5d0a0a3ac54f9754c1a64
         }
     }
 
@@ -281,6 +324,11 @@ public class MainActivity extends AppCompatActivity implements FilmAdapter.FilmC
 
     }
 
+<<<<<<< HEAD
+=======
+    public class FilmHandler extends AsyncTask<URL, Void, String>{
+        //TODO SUGGESTION Consider using AsyncTaskLoader rather than AsyncTask, for the many benefits it brings as discussed in class
+>>>>>>> 779f4ee579023dc3ace5d0a0a3ac54f9754c1a64
 
     private String handleMovieDBRequests(String movieDbString){
         String filmUrlString = movieDbString;
@@ -311,6 +359,7 @@ public class MainActivity extends AppCompatActivity implements FilmAdapter.FilmC
             JSONObject results = null;
             JSONArray films = null;
             try{
+<<<<<<< HEAD
                 //Set results to a new JSONObject, passing in the String into the constructor
                 results = new JSONObject(filmData);
                 //Set films equal to the JSON Array designated by the String results
@@ -323,6 +372,60 @@ public class MainActivity extends AppCompatActivity implements FilmAdapter.FilmC
                 //TODO SUGGESTION Much of this heavy lifting could be done in the background thread rather than the UI thread: performance, UX.
             }catch(JSONException jsonEx){
                 Log.e(MainActivity.class.getSimpleName(), jsonEx.getMessage());
+=======
+                //Start a new Thread and get the HTTP response
+                filmResults = MainActivity.getResponseFromMovieDb(filmUrls);
+                // TODO AWESOME  You're doing your network requests on a background thread
+            }catch(IOException ioEx){
+                Log.e(MainActivity.class.getSimpleName(), ioEx.getMessage());
+            }
+            return filmResults;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            //When the thread has finished executing, and the response is not null or an empty string
+            if(s != null && !s.equals("")){
+                //Declare necessary JSON variables
+                JSONObject results = null;
+                JSONArray films = null;
+                try{
+                    //Set results to a new JSONObject, passing in the String into the constructor
+                    results = new JSONObject(s);
+                    //Set films equal to the JSON Array designated by the String results
+                    films = results.getJSONArray("results");
+                    // TODO SUGGESTION Move string literals to strings.xml or constants
+                    //Call the setfilms method on the filmToDisplay filmadapter object, passing in the films JSONArray
+                    filmToDisplay.setFilms(films);
+                    //Set the rvFilms recyclerview Object equal to the RecyclerView designated by rv_films_to_display
+                    rvFilms = (RecyclerView) findViewById(R.id.rv_films_to_display);
+                    tvErrorBox.setVisibility(View.INVISIBLE);
+                    rvFilms.setVisibility(View.VISIBLE);
+                    //Get the current orientation
+                    int orient = cont.getResources().getConfiguration().orientation;
+                    GridLayoutManager filmGrid = null;
+                    //If its in portrait, set the Grid layout manager to use 2 items per row, it its landscape, use 4 items per row
+                    switch(orient){
+                        case 1 : filmGrid = new GridLayoutManager(getBaseContext(), 2); break;
+                        case 2 : filmGrid = new GridLayoutManager(getBaseContext(), 4); break;
+                    }
+                    //Set the rvFilms layoutManager equal to filmGrid
+                    rvFilms.setLayoutManager(filmGrid);
+                    rvFilms.setHasFixedSize(true);
+                    //Set the rvFilms adapter equal to filmToDisplay
+                    rvFilms.setAdapter(filmToDisplay);
+                    //TODO SUGGESTION Much of this heavy lifting could be done in the background thread rather than the UI thread: performance, UX.
+                }catch(JSONException jsonEx){
+                    Log.e(MainActivity.class.getSimpleName(), jsonEx.getMessage());
+                }
+            }
+            else{
+                Log.d(MainActivity.class.getSimpleName(), "test");
+                if(rvFilms != null) {
+                    rvFilms.setVisibility(View.INVISIBLE);
+                }
+                tvErrorBox.setVisibility(View.VISIBLE);
+>>>>>>> 779f4ee579023dc3ace5d0a0a3ac54f9754c1a64
             }
         }
         else{
