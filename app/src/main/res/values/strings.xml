@@ -3,17 +3,30 @@
     <string name="menu_title" translatable="true">Refresh</string>
     <string name="film_request" translatable="false">https://api.themoviedb.org/3/movie/popular?</string>
     <string name="film_request_rating" translatable="false">https://api.themoviedb.org/3/movie/top_rated?</string>
+    <string name="trailer_request_start" translatable="false">https://api.themoviedb.org/3/movie/</string>
+    <string name="trailer_request_end" translatable="false">/videos?</string>
+    <string name="review_request_end" translatable="false">/reviews?</string>
     <string name="sorting_by_highest" translatable="true">Sorting by Highest Rated</string>
+    <string name="sorting_by_favourites" translatable="true">Sorting by Favourites</string>
     <string name="sorting_by_most_popular" translatable="true">Sorting by Most Popular</string>
     <string name="refreshing_list" translatable="true">Refreshing List</string>
     <string name="loading_films" translatable="true">Loading Highest Rated Films</string>
     <string name="film_json_not_found" translatable="true">Something has gone wrong, please check you have a stable internet connection, and try again.</string>
     <string name="highest_rated" translatable="true">Sort by Highest Rated</string>
     <string name="most_popular" translatable="true">Sort by Most Popular</string>
+    <string name="favourites" translatable="true">Sort by Favourite Films</string>
     <string name="title_length_check" translatable="false">...</string>
     <string name="poster_path" translatable="false">http://image.tmdb.org/t/p/w185</string>
     <string name="details_title" translatable="true">Title</string>
     <string name="details_releasedate" translatable="true">Release Date</string>
     <string name="details_rating" translatable="true">Rating</string>
     <string name="details_overview" translatable="true">Summary</string>
+    <string name="details_add_favourite" translatable="true">Add To Favourites</string>
+    <string name="details_remove_favourite" translatable="true">Remove from Favourites</string>
+    <string name="details_added_to_favourites" translatable="true">  added to favourites</string>
+    <string name="invalid_uri_exception" translatable="true">Invalid URI</string>
+    <string name="iv_content_description" translatable="true">The Poster for </string>
+    <string name="film_detail_trailer_intro" translatable="true">Click to watch: </string>
+    <string name="film_detail_trailer_tab" translatable="true">Trailers</string>
+    <string name="film_detail_review_tab" translatable="true">Reviews - Click to view in browser</string>
 </resources>

@@ -18,7 +18,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".FilmDetailActivity"></activity>
+        <activity android:name=".FilmDetailActivity"
+            android:parentActivityName=".MainActivity"/>
+
+
+        <provider
+            android:authorities="com.example.android.app.myview.popularmovies"
+            android:name="com.example.android.app.myview.popularmovies.FilmDBContentProvider"
+            android:exported="true"/>
     </application>
 
 </manifest>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="tab_text_sixe">24sp</dimen>
+    <dimen name="detail_padding_bottom">3dp</dimen>
+    <dimen name="detail_text_size">20sp</dimen>
+    <dimen name="detail_overview_text_size">18sp</dimen>
+    <dimen name="detail_overview_padding">14dp</dimen>
+    <dimen name="detail_land_tab_text">20sp</dimen>
+    <dimen name="detail_land_text_size">16sp</dimen>
+</resources>
