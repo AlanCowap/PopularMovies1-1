@@ -1,8 +1,5 @@
 package com.example.android.app.myview.popularmovies;
 
-/**
- * Created by liamd on 17/07/2017.
- */
 
 public class Review {
 
