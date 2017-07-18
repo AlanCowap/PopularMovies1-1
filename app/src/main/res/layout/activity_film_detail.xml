@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!-- TODO REQUIREMENT Build fails due to XML: Not well formed -->
+<!-- TODO SUGGESTION Remove the API key from your gradle.properties before submitting, rather than having no gradle.prpperties file -->
 <<<<<<< HEAD
 <ScrollView android:layout_width="match_parent"
         android:layout_height="match_parent"
