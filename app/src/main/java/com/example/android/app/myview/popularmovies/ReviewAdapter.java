@@ -45,7 +45,7 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ReviewView
     public void setReviewList(JSONArray reviews){
         try{
             reviewList = new Review[reviews.length()];
-            Log.d(TrailerAdapter.class.getSimpleName(), "  TEST TEST  1" + reviews.length());
+  
 
             for(int i = 0; i < reviews.length();++i){
                 JSONObject jsOb = reviews.getJSONObject(i);
