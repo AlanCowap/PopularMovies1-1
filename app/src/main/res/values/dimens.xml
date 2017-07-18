@@ -7,4 +7,8 @@
     <dimen name="detail_overview_padding">14dp</dimen>
     <dimen name="detail_land_tab_text">20sp</dimen>
     <dimen name="detail_land_text_size">16sp</dimen>
+    <dimen name="trailer_padding">8dp</dimen>
+    <dimen name="trailer_text_size">18sp</dimen>
+    <dimen name="review_text_size">18sp</dimen>
+    <dimen name="review_padding">14dp</dimen>
 </resources>
