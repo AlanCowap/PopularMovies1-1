@@ -1,113 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<<<<<<< HEAD
 <ScrollView android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:background="@color/filmAppBackground">
-
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-=======
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.example.android.app.myview.popularmovies.FilmDetailActivity"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:background="@color/filmAppBackground">
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/iv_film_detail_poster"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/tabBackground"
-        android:layout_toRightOf="@+id/iv_film_detail_poster"
-        android:id="@+id/tv_title_tab"
-        android:text="@string/details_title"
-        android:textSize="24sp"
-        android:textColor="@color/filmText"
-        android:textAlignment="center"
-        android:paddingBottom="3dp"
-        />
-    <!-- TODO REQUIREMENT Move strings like these to strings.xml android:Text="Title" -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/filmText"
-        android:textSize="20sp"
-        android:textAlignment="center"
-        android:id="@+id/tv_film_detail_title"
-        android:layout_toRightOf="@+id/iv_film_detail_poster"
-        android:layout_below="@+id/tv_title_tab"
-        />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/release_date_tab"
-        android:textSize="24sp"
-        android:textColor="@color/filmText"
-        android:textAlignment="center"
-        android:paddingBottom="3dp"
-        android:layout_toRightOf="@id/iv_film_detail_poster"
-        android:layout_below="@id/tv_film_detail_title"
-        android:background="@color/tabBackground"
-        android:text="@string/details_releasedate"
-        />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/tv_film_detail_release_date"
-        android:layout_toRightOf="@id/iv_film_detail_poster"
-        android:layout_below="@id/release_date_tab"
-        android:textSize="20sp"
-        android:textColor="@color/filmText"
-        android:textAlignment="center"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/ratings_tab"
-        android:textSize="24sp"
-        android:textColor="@color/filmText"
-        android:textAlignment="center"
-        android:paddingBottom="3dp"
-        android:layout_toRightOf="@id/iv_film_detail_poster"
-        android:layout_below="@id/tv_film_detail_release_date"
-        android:background="@color/tabBackground"
-        android:text="@string/details_rating"
-        />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/tv_film_detail_rating"
-        android:textSize="20sp"
-        android:layout_toRightOf="@id/iv_film_detail_poster"
-        android:layout_below="@id/ratings_tab"
-        android:textColor="@color/filmText"
-        android:textAlignment="center"/>
-    <TextView
->>>>>>> 779f4ee579023dc3ace5d0a0a3ac54f9754c1a64
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context="com.example.android.app.myview.popularmovies.FilmDetailActivity"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent" android:layout_height="match_parent"
         android:background="@color/filmAppBackground">
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/iv_film_detail_poster"
-            android:contentDescription=""/>
+            android:id="@+id/iv_film_detail_poster"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/tabBackground"
-            android:layout_toRightOf="@+id/iv_film_detail_poster"
+            android:layout_toEndOf="@+id/iv_film_detail_poster"
             android:id="@+id/tv_title_tab"
             android:text="@string/details_title"
-            android:textSize="@dimen/tab_text_sixe"
+            android:textSize="@dimen/detail_land_tab_text"
             android:textColor="@color/filmText"
             android:textAlignment="center"
             android:paddingBottom="@dimen/detail_padding_bottom"
@@ -116,21 +26,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/filmText"
-            android:textSize="@dimen/detail_text_size"
+            android:textSize="@dimen/detail_land_text_size"
             android:textAlignment="center"
             android:id="@+id/tv_film_detail_title"
-            android:layout_toRightOf="@+id/iv_film_detail_poster"
+            android:layout_toEndOf="@+id/iv_film_detail_poster"
             android:layout_below="@+id/tv_title_tab"
             />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/release_date_tab"
-            android:textSize="@dimen/tab_text_sixe"
+            android:textSize="@dimen/detail_text_size"
             android:textColor="@color/filmText"
             android:textAlignment="center"
             android:paddingBottom="@dimen/detail_padding_bottom"
-            android:layout_toRightOf="@id/iv_film_detail_poster"
+            android:layout_toEndOf="@id/iv_film_detail_poster"
             android:layout_below="@id/tv_film_detail_title"
             android:background="@color/tabBackground"
             android:text="@string/details_releasedate"
@@ -139,20 +49,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/tv_film_detail_release_date"
-            android:layout_toRightOf="@id/iv_film_detail_poster"
+            android:layout_toEndOf="@id/iv_film_detail_poster"
             android:layout_below="@id/release_date_tab"
-            android:textSize="@dimen/detail_text_size"
+            android:textSize="14sp"
             android:textColor="@color/filmText"
             android:textAlignment="center"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/ratings_tab"
-            android:textSize="@dimen/tab_text_sixe"
+            android:textSize="@dimen/detail_text_size"
             android:textColor="@color/filmText"
             android:textAlignment="center"
             android:paddingBottom="@dimen/detail_padding_bottom"
-            android:layout_toRightOf="@id/iv_film_detail_poster"
+            android:layout_toEndOf="@id/iv_film_detail_poster"
             android:layout_below="@id/tv_film_detail_release_date"
             android:background="@color/tabBackground"
             android:text="@string/details_rating"
@@ -161,8 +71,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/tv_film_detail_rating"
-            android:textSize="@dimen/detail_text_size"
-            android:layout_toRightOf="@id/iv_film_detail_poster"
+            android:textSize="14sp"
+            android:layout_toEndOf="@id/iv_film_detail_poster"
             android:layout_below="@id/ratings_tab"
             android:textColor="@color/filmText"
             android:textAlignment="center"/>
@@ -170,27 +80,29 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/summary_tab"
-            android:textSize="@dimen/tab_text_sixe"
+            android:textSize="@dimen/detail_text_size"
             android:textColor="@color/filmText"
             android:textAlignment="center"
             android:paddingBottom="@dimen/detail_padding_bottom"
-            android:layout_below="@id/iv_film_detail_poster"
+            android:layout_below="@id/tv_film_detail_rating"
+            android:layout_toEndOf="@id/iv_film_detail_poster"
             android:background="@color/tabBackground"
             android:text="@string/details_overview"
             />
         <ScrollView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/summary_tab"
-            android:id="@+id/sv_overview">
+            android:layout_toEndOf="@id/iv_film_detail_poster"
+            android:layout_below="@id/summary_tab">
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/tv_film_detail_overview"
-                android:textSize="@dimen/detail_overview_text_size"
-                android:paddingStart="@dimen/detail_overview_padding"
-                android:paddingEnd="@dimen/detail_overview_padding"
+                android:textSize="@dimen/detail_land_text_size"
+                android:paddingLeft="14dp"
+                android:paddingRight="14dp"
                 android:textColor="@color/filmText"
+
                 />
         </ScrollView>
         <TextView
@@ -201,7 +113,7 @@
             android:textColor="@color/filmText"
             android:textAlignment="center"
             android:paddingBottom="@dimen/detail_padding_bottom"
-            android:layout_below="@id/sv_overview"
+            android:layout_below="@id/iv_film_detail_poster"
             android:background="@color/tabBackground"
             android:text="@string/film_detail_trailer_tab"
             />
@@ -209,7 +121,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/trailer_tab"
-            android:id="@+id/rv_trailers" />
+            android:id="@+id/rv_trailers"/>
 
         <TextView
             android:layout_width="match_parent"
