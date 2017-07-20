@@ -7,13 +7,19 @@
         android:layout_height="wrap_content"
         android:id="@+id/tv_review_content"
         android:adjustViewBounds="true"
-        android:textSize="18sp"
-        android:textColor="@color/filmText"/>
+        android:textSize="@dimen/review_text_size"
+        android:textColor="@color/filmText"
+        android:paddingTop="@dimen/trailer_padding"
+        android:paddingStart="@dimen/review_padding"
+        android:paddingEnd="@dimen/review_padding"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/tv_review_author"
         android:adjustViewBounds="true"
-        android:textSize="18sp"
-        android:textColor="@color/filmText"/>
+        android:textSize="@dimen/review_text_size"
+        android:paddingBottom="@dimen/trailer_padding"
+        android:textColor="@color/filmText"
+        android:paddingStart="@dimen/review_padding"
+        android:paddingEnd="@dimen/review_padding"/>
 </LinearLayout>

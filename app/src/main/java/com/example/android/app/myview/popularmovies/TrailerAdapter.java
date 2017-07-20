@@ -50,7 +50,7 @@ public class TrailerAdapter extends RecyclerView.Adapter<TrailerAdapter.TrailerV
     public void setTrailerList(JSONArray trailers){
         try{
             trailerList = new Trailer[trailers.length()];
-            Log.d(TrailerAdapter.class.getSimpleName(), "  TEST TEST  1" + trailers.length());
+            
 
             for(int i = 0; i < trailers.length();++i){
                 JSONObject jsOb = trailers.getJSONObject(i);
