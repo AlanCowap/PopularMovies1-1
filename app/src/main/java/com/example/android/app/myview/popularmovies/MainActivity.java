@@ -114,6 +114,7 @@ public class MainActivity extends AppCompatActivity implements FilmAdapter.FilmC
         super.onResume();
         this.sortOption = appSharedPreferences.getInt(PREFERENCES_SORT_ID, 0);
         getMovies(sortOption);
+        //TODO-4 SUGGESTION For Phase2 onwards you will be expected to maintain state per the Udacity Core App Quality Guidelines
     }
 
     public void onPause(){
