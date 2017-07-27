@@ -245,7 +245,7 @@ public class FilmDetailActivity extends AppCompatActivity implements LoaderManag
 
     @Override
     public void onLoadFinished(Loader<String> loader, String data) {
-        if(data != null && !data.equals("")){
+        if(data != null && !data.equals(GeneralUtils.EMPTY_STRING)){
              //TODO SUGGESTION Much of this heavy lifting could be done in the background thread rather than the UI thread: performance, UX.
             if(rvTrailers != null) {
                 buildReviewRv();
