@@ -29,4 +29,5 @@
     <string name="film_detail_trailer_intro" translatable="true">Click to watch: </string>
     <string name="film_detail_trailer_tab" translatable="true">Trailers</string>
     <string name="film_detail_review_tab" translatable="true">Reviews - Click to view in browser</string>
+    <string name="iv_recycler_view_content_description" translatable="true">Film Poster</string>
 </resources>
