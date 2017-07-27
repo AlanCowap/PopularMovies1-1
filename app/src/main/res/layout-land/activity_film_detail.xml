@@ -9,7 +9,9 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/iv_film_detail_poster"/>
+            android:id="@+id/iv_film_detail_poster"
+            android:contentDescription="@string/iv_recycler_view_content_description"       
+                   />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
