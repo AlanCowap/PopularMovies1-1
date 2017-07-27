@@ -17,7 +17,7 @@ import java.net.URL;
 
 public class GeneralUtils {
 
-
+    public static final String EMPTY_STRING = "";
 
     public static String handleMovieDBRequests(String movieDbString,FilmAdapter filmAdapter, TrailerAdapter trailerAdapter, ReviewAdapter reviewAdapter){
         String urlString = movieDbString;
