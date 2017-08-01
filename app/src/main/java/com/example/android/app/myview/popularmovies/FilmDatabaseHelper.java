@@ -33,6 +33,7 @@ public class FilmDatabaseHelper extends SQLiteOpenHelper{
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + FilmDatabaseContract.FilmDatabase.FILM_TABLE_NAME);
+        //TODO-2.1 REQUIREMENT Move all string literals to strings.xml or define as constants
         onCreate(db);
     }
 }
