@@ -51,9 +51,7 @@ public class FilmAdapter extends RecyclerView.Adapter<FilmAdapter.FilmViewHolder
     public void setFilms(Cursor filmCursor){
         //Film[] testFilms = new Film[filmCursor.getCount()];
         listOfFilms = new Film[filmCursor.getCount()];
-        Log.d(FilmAdapter.class.getSimpleName(),"TEST TEST 1 " + Integer.toString(listOfFilms.length));
         for(int i = 0; i < listOfFilms.length; ++i){
-            Log.d(FilmAdapter.class.getSimpleName(), "TEST TEST 3 ");
             filmCursor.moveToPosition(i);
             listOfFilms[i] = new Film(
                     filmCursor.getString(filmCursor.getColumnIndex(FilmDatabaseContract.FilmDatabase.COLUMN_FILM_TITLE)),
@@ -63,7 +61,6 @@ public class FilmAdapter extends RecyclerView.Adapter<FilmAdapter.FilmViewHolder
                     filmCursor.getString(filmCursor.getColumnIndex(FilmDatabaseContract.FilmDatabase.COLUMN_FILM_RELEASE_DATE)),
                     filmCursor.getString(filmCursor.getColumnIndex(FilmDatabaseContract.FilmDatabase.COLUMN_FILM_MOVIEDB_ID))
             );
-            Log.d(FilmAdapter.class.getSimpleName(), "TEST TEST 2 " +listOfFilms[i].getFilmPosterPath());
         }
         this.numFilms = filmCursor.getCount();
     }
@@ -140,30 +137,17 @@ public class FilmAdapter extends RecyclerView.Adapter<FilmAdapter.FilmViewHolder
             //If filmPoster isnt null, and contains a ., for file extension, use Picasso to fill the Imageview with the Image at that location. If it is null or empty
             //use the no poster image, taken from http://www.pinsdaddy.com/no-image-available-icon_nquACkOxV*TJt*l2puUBRhlP12hWM2e9JtVGM0jwJfA/
             if(filmposter != null){
-                if(!filmposter.contains(".")){
-                    int width = con.getResources().getDisplayMetrics().widthPixels;
-                    int orient = con.getResources().getConfiguration().orientation;
-                    switch (orient) {
-                        case 1:
-                            // Picasso.with(con).load(R.drawable.no_poster_image).resize(width / 2, 0).into(poster);
-                            break;
-                        case 2:
-                            // Picasso.with(con).load(R.drawable.no_poster_image).resize(width / 4, 0).into(poster);
-                            break;
-                    }
+                int width = con.getResources().getDisplayMetrics().widthPixels;
+                int orient = con.getResources().getConfiguration().orientation;
+                switch (orient) {
+                    case 1:
+                        Picasso.with(con).load(con.getResources().getString(R.string.poster_path) + filmposter).resize(width / 2, 0).into(poster);
+                        break;
+                    case 2:
+                        Picasso.with(con).load(con.getResources().getString(R.string.poster_path) + filmposter).resize(width / 4, 0).into(poster);
+                        break;
                 }
-                else {
-                    int width = con.getResources().getDisplayMetrics().widthPixels;
-                    int orient = con.getResources().getConfiguration().orientation;
-                    switch (orient) {
-                        case 1:
-                            Picasso.with(con).load(con.getResources().getString(R.string.poster_path) + filmposter).resize(width / 2, 0).into(poster);
-                            break;
-                        case 2:
-                            Picasso.with(con).load(con.getResources().getString(R.string.poster_path) + filmposter).resize(width / 4, 0).into(poster);
-                            break;
-                    }
-                }
+
             }
 
         }
