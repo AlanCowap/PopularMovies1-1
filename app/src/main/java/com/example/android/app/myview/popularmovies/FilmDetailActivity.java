@@ -49,6 +49,7 @@ public class FilmDetailActivity extends AppCompatActivity implements LoaderManag
     private static final int REVIEW_ID = 2;
     private static final String YOUTUBE_URI = "vnd.youtube:";
     private static final String LOADER_CHOICE_ID = "loader_choice_id";
+    private static final String EQUAL_STRING =  "=";
     private TrailerAdapter trailerAdapter;
     private ReviewAdapter reviewAdapter;
     @Override
@@ -95,13 +96,11 @@ public class FilmDetailActivity extends AppCompatActivity implements LoaderManag
             tvReleaseDate.setText(filmDetails.getFilmReleaseDate());
             String posterPath =  getResources().getString(R.string.poster_path);
             //If filmposter does not contain a ., use the default no poster image from drawables, found at http://www.pinsdaddy.com/no-image-available-icon_nquACkOxV*TJt*l2puUBRhlP12hWM2e9JtVGM0jwJfA/
-            if(!filmPoster.contains(".")){
+
                 //TODO-2.1 REQUIREMENT Move String literals to strings.xml or define them as constants
                 //TODO-2.1 SUGGESTION The if statement body is empty
                 //TODO-2.1 Be mindful that some reviewers may not appreciate commented-out code in your submission
-                //Picasso.with(this).load(R.drawable.no_poster_image).resize(width/2,0).into(ivPoster);
-                //Otherwise use the film poster from that location
-            }else Picasso.with(this).load(posterPath+ filmPoster).resize(width/2,0).into(ivPoster);
+            Picasso.with(this).load(posterPath+ filmPoster).resize(width/2,0).into(ivPoster);
             tvOverview.setText(filmDetails.getFilmOverview());
             ivPoster.setContentDescription(getResources().getString(R.string.iv_content_description) + filmPoster);
         }else {
@@ -170,14 +169,12 @@ public class FilmDetailActivity extends AppCompatActivity implements LoaderManag
         Cursor filmQuery = null;
         filmQuery = getContentResolver().query(FilmDatabaseContract.ALL_FILMS_URI,
                 null,
-                FilmDatabaseContract.FilmDatabase.COLUMN_FILM_TITLE + "=" +this.sqlQueryTag + this.chosenFilm.getFilmName() + this.sqlQueryTag,
+                FilmDatabaseContract.FilmDatabase.COLUMN_FILM_TITLE + EQUAL_STRING +this.sqlQueryTag + this.chosenFilm.getFilmName() + this.sqlQueryTag,
                 null,
                 null
                 );
-        if(filmQuery.getCount() > 0){
-            return true;
-        }
-        return false;
+
+        return filmQuery.getCount() > 0;
         //TODO-2.1 SUGGESTION Simplify the above with: return filmQuery.getCount() > 0;
     }
     private void removeFavourite(String filmName){
@@ -232,9 +229,6 @@ public class FilmDetailActivity extends AppCompatActivity implements LoaderManag
             @Override
             protected void onStartLoading(){
                 super.onStartLoading();
-                if(args == null){
-                    return;
-                }
                 //TODO-2.1 SUGGESTION The if and return statements are not necessary, tidy them up.
             }
 
@@ -254,7 +248,7 @@ public class FilmDetailActivity extends AppCompatActivity implements LoaderManag
 
     @Override
     public void onLoadFinished(Loader<String> loader, String data) {
-        if(data != null && !data.equals("")){
+        if(data != null && !data.equals(GeneralUtils.EMPTY_STRING)){
              //TODO SUGGESTION Much of this heavy lifting could be done in the background thread rather than the UI thread: performance, UX.
             if(rvTrailers != null) {
                 buildReviewRv();
