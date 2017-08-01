@@ -25,7 +25,7 @@
         <provider
             android:authorities="com.example.android.app.myview.popularmovies"
             android:name="com.example.android.app.myview.popularmovies.FilmDBContentProvider"
-            android:exported="true"/>
+            android:exported="false"/>
         <!-- TODO-2.1 SUGGESTION Perhaps you intended it and that's fine, but otherwise the CP does not require to be exported unless you intend other apps to use it -->
     </application>
 
