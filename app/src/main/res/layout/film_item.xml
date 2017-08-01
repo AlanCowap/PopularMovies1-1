@@ -9,6 +9,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/iv_film_poster"
         android:adjustViewBounds="true"
+        android:contentDescription="@string/iv_recycler_view_content_description"
         />
     <!-- TODO SUGGESTION Include a contentDescription for ImageViews for Accessibility-->
 </FrameLayout>

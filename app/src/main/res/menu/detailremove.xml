@@ -5,6 +5,8 @@
         android:id="@+id/mn_details_remove"
         android:title="@string/details_remove_favourite"
         android:orderInCategory="1"
-        app:showAsAction="ifRoom">
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_star_white_24dp"
+        >
         </item>
 </menu>

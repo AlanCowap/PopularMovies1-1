@@ -22,4 +22,8 @@
         android:textColor="@color/filmText"
         android:paddingStart="@dimen/review_padding"
         android:paddingEnd="@dimen/review_padding"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/tv_review_bottom_divider"
+        android:background="@color/filmText"/>
 </LinearLayout>

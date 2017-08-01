@@ -114,13 +114,19 @@ public class FilmDetailActivity extends AppCompatActivity implements LoaderManag
     //Inflate the menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        this.inflateFavouritesMenu(menu);
+        return true;
+    }
+
+    private void inflateFavouritesMenu(Menu menu){
         if(this.isFavourite()){
             getMenuInflater().inflate(R.menu.detailremove, menu);
         }else{
             getMenuInflater().inflate(R.menu.detailmenu, menu);
         }
-        return true;
     }
+
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if(item.getItemId() == R.id.mn_details_favourite){
@@ -133,13 +139,13 @@ public class FilmDetailActivity extends AppCompatActivity implements LoaderManag
                     chosenFilm.getFilmPosterPath(),
                     chosenFilm.getFilmMovieDBId()
             );
-
         }else if(item.getItemId() == R.id.mn_details_remove){
             this.removeFavourite(chosenFilm.getFilmName());
         }
         else {
             return super.onOptionsItemSelected(item);
         }
+        invalidateOptionsMenu();
         return true;
     }
 
@@ -152,8 +158,6 @@ public class FilmDetailActivity extends AppCompatActivity implements LoaderManag
         mapFilms.put(FilmDatabaseContract.FilmDatabase.COLUMN_FILM_RELEASE_DATE, filmReleaseDate);
         mapFilms.put(FilmDatabaseContract.FilmDatabase.COLUMN_FILM_POSTER_PATH, filmPosterPath);
         mapFilms.put(FilmDatabaseContract.FilmDatabase.COLUMN_FILM_MOVIEDB_ID, filmMovieDbId);
-        displayToast = Toast.makeText(this, filmName + getResources().getString(R.string.details_added_to_favourites), Toast.LENGTH_LONG);
-        displayToast.show();
         Uri filmUri = getContentResolver().insert(FilmDatabaseContract.ALL_FILMS_URI,mapFilms);
         //return filmDatabase.insert(FilmDatabaseContract.FilmDatabase.FILM_TABLE_NAME, null , mapFilms);
     }
@@ -235,7 +239,7 @@ public class FilmDetailActivity extends AppCompatActivity implements LoaderManag
                 int sortCheck = args.getInt(LOADER_CHOICE_ID);
                 switch (sortCheck){
                     case TRAILER_ID:trailerData = GeneralUtils.handleMovieDBRequests(args.getString(TRAILER_URL_STRING),null, trailerAdapter, null);break;
-                    case REVIEW_ID: trailerData = GeneralUtils.handleMovieDBRequests(args.getString(TRAILER_URL_STRING),null, null, reviewAdapter);;break;
+                    case REVIEW_ID: trailerData = GeneralUtils.handleMovieDBRequests(args.getString(TRAILER_URL_STRING),null, null, reviewAdapter);break;
                 }
 
                 return trailerData;
@@ -290,7 +294,6 @@ public class FilmDetailActivity extends AppCompatActivity implements LoaderManag
     private void buildReviewRv(){
         //Declare necessary JSON variables
         //Set results to a new JSONObject, passing in the String into the constructor
-        // TODO SUGGESTION Move string literals to strings.xml or constants
         //Call the setfilms method on the filmToDisplay filmadapter object, passing in the films JSONArray
         //Set the rvFilms recyclerview Object equal to the RecyclerView designated by rv_films_to_display
         rvReviews = (RecyclerView) findViewById(R.id.rv_reviews);

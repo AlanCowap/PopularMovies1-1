@@ -56,6 +56,8 @@ public class MainActivity extends AppCompatActivity implements FilmAdapter.FilmC
     private static final String FILM_URL_STRING = "FILM_URL";
     private static final int LOADER_ID = 10011;
     private static final String PREFERENCES_SORT_ID = "MOVIES_SORT_BY";
+    private static final String FILM_CURRENT_POSITION = "FILM_LAST_KNOWN_POSITION";
+    private int filmCurrentPosition;
     private SQLiteDatabase filmDatabase;
     private SharedPreferences appSharedPreferences;
     //TODO Excellent You're not storing your key in your java code, however instructions on how & where to put the key would be helpful!
@@ -86,7 +88,6 @@ public class MainActivity extends AppCompatActivity implements FilmAdapter.FilmC
             if(appSharedPreferences.getInt(PREFERENCES_SORT_ID, -1) == -1){
                 this.getMovies(sortOption);
             }
-
         }
     }
 
@@ -100,19 +101,31 @@ public class MainActivity extends AppCompatActivity implements FilmAdapter.FilmC
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState){
         savedInstanceState.putInt(SORT_INSTANCE, this.sortOption);
+        int filmLastKnownPosition = 0;
+        if (rvFilms != null) {
+            filmLastKnownPosition = this.getCurrentRVFilmPosition();
+        }
+        savedInstanceState.putInt(FILM_CURRENT_POSITION,filmLastKnownPosition);
         super.onSaveInstanceState(savedInstanceState);
     }
 
+
+    private int getCurrentRVFilmPosition(){
+        GridLayoutManager gridLayout = (GridLayoutManager) rvFilms.getLayoutManager();
+        return gridLayout.findFirstVisibleItemPosition();
+    }
     @Override
     public void onRestoreInstanceState(Bundle savedInstanceState){
         int sortInt = savedInstanceState.getInt(SORT_INSTANCE);
         this.sortOption = sortInt;
-        //this.getMovies(sortInt);
+        int currentPosition = savedInstanceState.getInt(FILM_CURRENT_POSITION);
+        this.filmCurrentPosition = currentPosition;
     }
 
     public void onResume(){
         super.onResume();
         this.sortOption = appSharedPreferences.getInt(PREFERENCES_SORT_ID, 0);
+        this.filmCurrentPosition = appSharedPreferences.getInt(FILM_CURRENT_POSITION, 0);
         getMovies(sortOption);
         //TODO-4 SUGGESTION For Phase2 onwards you will be expected to maintain state per the Udacity Core App Quality Guidelines
     }
@@ -121,6 +134,11 @@ public class MainActivity extends AppCompatActivity implements FilmAdapter.FilmC
         super.onPause();
         SharedPreferences.Editor spEditor = this.appSharedPreferences.edit();
         spEditor.putInt(PREFERENCES_SORT_ID, this.sortOption);
+        int filmLastKnownPosition = 0;
+        if (rvFilms != null) {
+            filmLastKnownPosition = this.getCurrentRVFilmPosition();
+        }
+        spEditor.putInt(FILM_CURRENT_POSITION, filmLastKnownPosition);
         spEditor.commit();
 
     }
@@ -299,7 +317,7 @@ public class MainActivity extends AppCompatActivity implements FilmAdapter.FilmC
     }
     @Override
     public void onLoadFinished(Loader<String> loader, String data) {
-        if(data != null && !data.equals("")){
+        if(data != null && !data.equals(GeneralUtils.EMPTY_STRING)){
             buildFilmRV(); //TODO SUGGESTION Much of this heavy lifting could be done in the background thread rather than the UI thread: performance, UX.
         }
         else{
@@ -349,5 +367,8 @@ public class MainActivity extends AppCompatActivity implements FilmAdapter.FilmC
         rvFilms.setHasFixedSize(true);
         //Set the rvFilms adapter equal to filmToDisplay
         rvFilms.setAdapter(filmToDisplay);
+        if(filmCurrentPosition > 0){
+            rvFilms.scrollToPosition(filmCurrentPosition);
+        }
     }
 }
