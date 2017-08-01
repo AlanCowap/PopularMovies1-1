@@ -18,7 +18,7 @@ import java.net.URL;
 public class GeneralUtils {
 
     public static final String EMPTY_STRING = "";
-
+    private static final String RESULTS_STRING = "results";
     public static String handleMovieDBRequests(String movieDbString,FilmAdapter filmAdapter, TrailerAdapter trailerAdapter, ReviewAdapter reviewAdapter){
         String urlString = movieDbString;
         if(urlString == null || TextUtils.isEmpty(urlString))
@@ -45,7 +45,7 @@ public class GeneralUtils {
         }
 
 
-        if(urlData != null && !urlData.equals("")){
+        if(urlData != null && !urlData.equals(EMPTY_STRING)){
             //Declare necessary JSON variables
             JSONObject results = null;
             JSONArray jsonData = null;
@@ -53,7 +53,7 @@ public class GeneralUtils {
                 //Set results to a new JSONObject, passing in the String into the constructor
                 results = new JSONObject(urlData);
                 //Set films equal to the JSON Array designated by the String results
-                jsonData = results.getJSONArray("results");
+                jsonData = results.getJSONArray(RESULTS_STRING);
                 // TODO SUGGESTION Move string literals to strings.xml or constants
                 //Call the setfilms method on the filmToDisplay filmadapter object, passing in the films JSONArray
                 if(filmAdapter != null){
