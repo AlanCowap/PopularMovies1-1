@@ -49,6 +49,7 @@ public class FilmDetailActivity extends AppCompatActivity implements LoaderManag
     private static final int REVIEW_ID = 2;
     private static final String YOUTUBE_URI = "vnd.youtube:";
     private static final String LOADER_CHOICE_ID = "loader_choice_id";
+    private static final String EQUAL_STIRNG =  "=";
     private TrailerAdapter trailerAdapter;
     private ReviewAdapter reviewAdapter;
     @Override
@@ -168,7 +169,7 @@ public class FilmDetailActivity extends AppCompatActivity implements LoaderManag
         Cursor filmQuery = null;
         filmQuery = getContentResolver().query(FilmDatabaseContract.ALL_FILMS_URI,
                 null,
-                FilmDatabaseContract.FilmDatabase.COLUMN_FILM_TITLE + "=" +this.sqlQueryTag + this.chosenFilm.getFilmName() + this.sqlQueryTag,
+                FilmDatabaseContract.FilmDatabase.COLUMN_FILM_TITLE + EQUAL_STIRNG +this.sqlQueryTag + this.chosenFilm.getFilmName() + this.sqlQueryTag,
                 null,
                 null
                 );
@@ -247,7 +248,7 @@ public class FilmDetailActivity extends AppCompatActivity implements LoaderManag
 
     @Override
     public void onLoadFinished(Loader<String> loader, String data) {
-        if(data != null && !data.equals("")){
+        if(data != null && !data.equals(GeneralUtils.EMPTY_STRING)){
              //TODO SUGGESTION Much of this heavy lifting could be done in the background thread rather than the UI thread: performance, UX.
             if(rvTrailers != null) {
                 buildReviewRv();
