@@ -49,7 +49,7 @@ public class FilmDetailActivity extends AppCompatActivity implements LoaderManag
     private static final int REVIEW_ID = 2;
     private static final String YOUTUBE_URI = "vnd.youtube:";
     private static final String LOADER_CHOICE_ID = "loader_choice_id";
-    private static final String EQUAL_STIRNG =  "=";
+    private static final String EQUAL_STRING =  "=";
     private TrailerAdapter trailerAdapter;
     private ReviewAdapter reviewAdapter;
     @Override
@@ -169,7 +169,7 @@ public class FilmDetailActivity extends AppCompatActivity implements LoaderManag
         Cursor filmQuery = null;
         filmQuery = getContentResolver().query(FilmDatabaseContract.ALL_FILMS_URI,
                 null,
-                FilmDatabaseContract.FilmDatabase.COLUMN_FILM_TITLE + EQUAL_STIRNG +this.sqlQueryTag + this.chosenFilm.getFilmName() + this.sqlQueryTag,
+                FilmDatabaseContract.FilmDatabase.COLUMN_FILM_TITLE + EQUAL_STRING +this.sqlQueryTag + this.chosenFilm.getFilmName() + this.sqlQueryTag,
                 null,
                 null
                 );
