@@ -41,7 +41,7 @@ public class FilmDetailActivity extends AppCompatActivity implements LoaderManag
     private Film chosenFilm;
     private Toast displayToast;
     private static final String MOVIE_DB_API = "api_key=" + BuildConfig.MY_MOVIEDB_API_KEY;
-    private static final String sqlQueryTag ="\"";
+    private static final String sqlQueryTag ="\""; //TODO-2.2 SUGGESTION Following the Java Naming Conventions e.g. SQL_QUERY_TAG
     private static final String sqlQueryStartTag = "=\"";
     private static final String TRAILER_URL_STRING = "TRAILER_URL";
     private static final int LOADER_ID = 10012;
@@ -173,6 +173,8 @@ public class FilmDetailActivity extends AppCompatActivity implements LoaderManag
                 null,
                 null
                 );
+            //TODO-2.2 SUGGESTION It's good practice to access static members via the class name rather than via an object reference variable
+            //TODO-2.2  i.e. FilmDetailActivity.SQL_QUERY_TAG rather than this.sqlQueryTag
 
         return filmQuery.getCount() > 0;
         //TODO-2.1 SUGGESTION Simplify the above with: return filmQuery.getCount() > 0;
