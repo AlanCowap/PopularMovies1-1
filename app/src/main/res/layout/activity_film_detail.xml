@@ -29,6 +29,7 @@
             android:textAlignment="center"
             android:paddingBottom="@dimen/detail_padding_bottom"
             />
+        <!--TODO-2.1 REQUIREMENT Internationalization replace android:layout_toRightOf with android:layout_toEndOf etc. -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -82,6 +82,8 @@ public class MainActivity extends AppCompatActivity implements FilmAdapter.FilmC
             //if(savedInstanceState.getBundle(SORT_INSTANCE) != null) {
             this.sortOption = savedInstanceState.getInt(SORT_INSTANCE);
             //TODO SUGGESTION Always check if your key is in the Bundle before attempting to retrieve it
+            //TODO-2.1 SUGGESTION As above.
+            //TODO-2.1 Be mindful that some reviewers may not appreciate commented-out code in your submission
             this.getMovies(sortOption);
             //}
         }else{
@@ -301,6 +303,7 @@ public class MainActivity extends AppCompatActivity implements FilmAdapter.FilmC
                 if(args == null){
                     return;
                 }
+                //TODO-2.1 SUGGESTION The if and return statements are not necessary, tidy them up.
             }
 
             @Override
